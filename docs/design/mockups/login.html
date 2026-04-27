@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="design-version" content="1" />
+<title>FableGlitch Studio · 登录</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+  --bg:#0a0a0b; --surface:#131316; --surface-2:#18181d; --surface-3:#1e1e24;
+  --border:#25252c; --border-hi:#35353d;
+  --text:#f5f5f7; --text-2:#a1a1a8; --text-3:#6b6b72; --text-4:#4a4a50;
+  --accent:#9b7cff; --accent-hi:#b294ff;
+  --accent-bg:rgba(155,124,255,.12); --accent-border:rgba(155,124,255,.35);
+  --green:#4ade80; --amber:#fbbf24; --red:#f87171;
+  --gradient-brand:linear-gradient(135deg,#9b7cff 0%,#e879f9 100%);
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sans:'Inter','Noto Sans SC',system-ui,sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--text);
+  letter-spacing:-0.005em;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:48px 20px;
+  /* subtle radial vignette to add depth without decoration */
+  background-image:
+    radial-gradient(ellipse at 30% 0%, rgba(155,124,255,0.06), transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(232,121,249,0.04), transparent 55%);
+}
+
+.card{
+  width:480px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:48px 40px 32px;
+}
+
+.brand{
+  text-align:center;
+  margin-bottom:40px;
+}
+.logo{
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:-0.02em;
+  background:var(--gradient-brand);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  display:inline-block;
+}
+.tagline{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--text-3);
+  margin-top:10px;
+  letter-spacing:0;
+}
+
+.tabs{
+  display:flex;
+  gap:0;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:4px;
+  margin-bottom:28px;
+}
+.tab{
+  flex:1;
+  text-align:center;
+  padding:10px 14px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--text-2);
+  border-radius:8px;
+  cursor:pointer;
+  transition:color .15s, background .15s;
+}
+.tab.active{
+  background:var(--surface-3);
+  color:var(--text);
+}
+.tab:not(.active):hover{ color:var(--text); }
+
+.field{ margin-bottom:18px; }
+.label{
+  display:block;
+  font-size:13px;
+  color:var(--text-2);
+  margin-bottom:8px;
+  font-weight:500;
+}
+.input{
+  width:100%;
+  height:44px;
+  padding:0 14px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:var(--text);
+  font-family:var(--sans);
+  font-size:14px;
+  outline:none;
+  transition:border-color .15s, background .15s;
+}
+.input::placeholder{ color:var(--text-4); }
+.input:focus{
+  border-color:var(--accent-border);
+  background:var(--surface-3);
+}
+.input.mono{ font-family:var(--mono); font-size:13px; }
+.hint{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--text-3);
+  margin-top:8px;
+}
+
+.cta{
+  width:100%;
+  height:48px;
+  margin-top:12px;
+  border:0;
+  border-radius:10px;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:600;
+  color:#fff;
+  cursor:pointer;
+  background:var(--gradient-brand);
+  letter-spacing:-0.005em;
+  transition:filter .15s, transform .05s;
+}
+.cta:hover{ filter:brightness(1.08); }
+.cta:active{ transform:translateY(1px); }
+
+.foot{
+  margin-top:28px;
+  text-align:center;
+  font-family:var(--mono);
+  font-size:10px;
+  color:var(--text-4);
+  letter-spacing:0;
+}
+
+.divider{
+  height:1px;
+  background:var(--border);
+  margin:24px 0;
+}
+
+.aux{
+  text-align:center;
+  font-size:13px;
+  color:var(--text-3);
+  margin-top:16px;
+}
+.aux a{
+  color:var(--text-2);
+  text-decoration:none;
+  border-bottom:1px solid var(--border);
+}
+.aux a:hover{ color:var(--text); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="brand">
+      <div class="logo">FableGlitch&nbsp;Studio</div>
+      <div class="tagline">菲博幻境工作室 · 内部资产管理</div>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active">登录</div>
+      <div class="tab">注册</div>
+    </div>
+
+    <div class="field">
+      <label class="label">邮箱</label>
+      <input class="input mono" type="email" placeholder="name@beva.com" value="lemeilin@beva.com" />
+      <div class="hint">@beva.com 内部邮箱</div>
+    </div>
+
+    <div class="field">
+      <label class="label">密码</label>
+      <input class="input" type="password" placeholder="••••••••" value="••••••••••" />
+    </div>
+
+    <button class="cta">登录</button>
+
+    <div class="aux">
+      还没有账号？ <a href="#">联系管理员开通</a>
+    </div>
+
+    <div class="foot">v0.1.0 · build 2026.04.27</div>
+  </div>
+</body>
+</html>
