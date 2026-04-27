@@ -5,9 +5,13 @@ export default defineConfig({
   test: {
     environment: 'node',
     globals: false,
-    include: ['**/*.test.ts'],
-    exclude: ['**/node_modules/**', '**/.next/**', '**/*.integration.test.ts'],
-    setupFiles: ['./test/setup-env.ts'],
+    include: ['**/*.integration.test.ts'],
+    exclude: ['**/node_modules/**', '**/.next/**'],
+    setupFiles: ['./test/setup-env.ts', './test/setup-msw.ts'],
+    testTimeout: 30_000,
+    hookTimeout: 30_000,
+    pool: 'forks',
+    poolOptions: { forks: { singleFork: true } },
   },
   resolve: {
     alias: {
