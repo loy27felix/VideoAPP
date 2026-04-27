@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Test-Path *)",
+      "Bash(C:/Users/FELIX LOY/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh *)",
+      "Skill(codex:setup)",
+      "Bash(node *)",
+      "WebFetch(domain:github.com)",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)",
+      "Bash(git add *)"
+    ]
+  }
+}
