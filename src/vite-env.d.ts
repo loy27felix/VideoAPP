@@ -1,38 +1,16 @@
 /// <reference types="vite/client" />
 
-import type {
-  AppBootstrap,
-  CreateProjectInput,
-  ExportResult,
-  GitStatusResult,
-  ProjectRecord,
-  PublishResult,
-} from './types'
-
-interface PublishPayload {
-  repoPath: string
-  commitMessage: string
-  push: boolean
-}
-
-interface VideoAppBridge {
-  bootstrap: () => Promise<AppBootstrap>
-  createProject: (input: CreateProjectInput) => Promise<ProjectRecord>
-  getProject: (projectId: string) => Promise<ProjectRecord>
-  updateProject: (
-    projectId: string,
-    patch: Partial<ProjectRecord>,
-  ) => Promise<ProjectRecord>
-  pickDirectory: () => Promise<string>
-  exportProjectToRepo: (projectId: string) => Promise<ExportResult>
-  getGitStatus: (repoPath: string) => Promise<GitStatusResult>
-  publishRepository: (payload: PublishPayload) => Promise<PublishResult>
+// Bridge surface — fleshed out across P0-C Tasks 3 & 4 (db / net / session).
+// Right now we only declare a placeholder so existing `window.fableglitch`
+// access type-checks during the foundation tasks.
+interface FableglitchBridge {
+  __placeholder: true;
 }
 
 declare global {
   interface Window {
-    videoApp: VideoAppBridge
+    fableglitch: FableglitchBridge;
   }
 }
 
-export {}
+export {};
